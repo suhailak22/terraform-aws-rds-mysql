@@ -1,8 +1,4 @@
-provider "aws" {
-  access_key = "AKIAZWGMDVZDWMGCWX6R"
-  secret_key = "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"
-  region = "us-east-1"
-}
+
 locals {
   create_password_secret    = var.password == null ? true : false
   final_snapshot_identifier = var.final_snapshot_identifier == null ? "${var.name}-final-snapshot" : var.final_snapshot_identifier
