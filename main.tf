@@ -1,3 +1,8 @@
+provider "aws" {
+  access_key = "AKIAZWGMDVZDWMGCWX6R"
+  secret_key = "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"
+  region = "us-east-1"
+}
 locals {
   create_password_secret    = var.password == null ? true : false
   final_snapshot_identifier = var.final_snapshot_identifier == null ? "${var.name}-final-snapshot" : var.final_snapshot_identifier
@@ -56,7 +61,7 @@ resource "aws_db_instance" "this" {
   monitoring_role_arn                 = var.monitoring_role_arn
   multi_az                            = var.multi_az
   parameter_group_name                = local.parameter_group_name
-  password                            = local.password
+  password                            = var.password
   performance_insights_enabled        = var.performance_insights_enabled #tfsec:ignore:aws-rds-enable-performance-insights
   port                                = var.port
   storage_encrypted                   = var.storage_encrypted

@@ -3,7 +3,7 @@
 ########################################
 
 variable "name" {
-  default     = "mysql-rds"
+  default     = "main"
   description = "common name for resources in this module"
   type        = string
 }
@@ -20,7 +20,7 @@ variable "tags" {
 ########################################
 
 variable "allowed_security_groups" {
-  default     = []
+  default     = ["sg-02a8acba47478e74a"]
   description = "IDs of security groups allowed to reach the database (not Names)"
   type        = list(string)
 }
@@ -171,13 +171,13 @@ variable "parameters" {
 }
 
 variable "password" {
-  default     = null
+  default     = "suhail22"
   description = "Master password (if not set, one will be generated dynamically and exposed through a secret)"
   type        = string
 }
 
 variable "password_length" {
-  default     = 30
+  default     = 8
   description = "Master password length (not used if `password` is set)"
   type        = number
 }
@@ -271,9 +271,11 @@ variable "port" {
 variable "subnet_group_name" {
   description = "name of DB subnet group to place DB in"
   type        = string
+  default     = "default"
 }
 
 variable "vpc_id" {
   description = "ID of VPC resources will be created in"
   type        = string
+  default     = "vpc-0b2df99c2be26c1e1"
 }
